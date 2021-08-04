@@ -13,9 +13,8 @@ Cypress.Commands.add('createNote', ({ content, important }) => {
     method: 'POST',
     body: { content, important },
     headers: {
-      'Authorization': `Bearer ${JSON.parse(localStorage.getItem('loggedNoteAppUser')).token}`
+      Authorization: `Bearer ${JSON.parse(localStorage.getItem('loggedNoteAppUser')).token}`
     }
   })
   cy.visit('http://localhost:3000')
-
 })

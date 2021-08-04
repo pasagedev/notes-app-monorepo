@@ -8,7 +8,6 @@ import { Togglable } from './components/Togglable'
 import loginService from './services/login'
 
 const App = () => {
-
   const [notes, setNotes] = useState([])
   const [showAll, setShowAll] = useState(true)
   const [errorMessage, setErrorMessage] = useState(null)
@@ -70,11 +69,12 @@ const App = () => {
       <div style={footerStyle}>
         <br />
         <em>Note app, Department of Computer Science, University of Helsinki 2020</em>
-      </div>)
+      </div>
+    )
   }
 
   const login = async ({ username, password }) => {
-    try{
+    try {
       const user = await loginService.login({
         username, password
       })
@@ -96,18 +96,21 @@ const App = () => {
       <h1>Notes</h1>
       <Notification message={errorMessage} />
       {user === null
-        ? <Togglable buttonLabel='show login'>
-          <LoginForm
-            login={login}
-          />
-        </Togglable>
-        : <div>
-          <p>{user.name} logged-in</p>
-          <Togglable buttonLabel='new note' ref={noteFormRef}>
-            <NoteForm createNote={addNote}/>
+        ? (
+          <Togglable buttonLabel='show login'>
+            <LoginForm
+              login={login}
+            />
           </Togglable>
-        </div>
-      }
+          )
+        : (
+          <div>
+            <p>{user.name} logged-in</p>
+            <Togglable buttonLabel='new note' ref={noteFormRef}>
+              <NoteForm createNote={addNote} />
+            </Togglable>
+          </div>
+          )}
 
       <div>
         <button onClick={() => setShowAll(!showAll)}>
@@ -116,9 +119,11 @@ const App = () => {
       </div>
       <ul>
         {notesToShow.map(note =>
-          <Note key={note.id}
+          <Note
+            key={note.id}
             note={note}
-            toggleImportance={toggleImportanceOf} />
+            toggleImportance={toggleImportanceOf}
+          />
         )}
       </ul>
 

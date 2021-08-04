@@ -8,8 +8,8 @@ describe('<Togglable />', () => {
 
   beforeEach(() => {
     component = render(
-      <Togglable buttonLabel="show...">
-        <div className="testDiv" />
+      <Togglable buttonLabel='show...'>
+        <div className='testDiv' />
       </Togglable>
     )
   })
@@ -44,5 +44,4 @@ describe('<Togglable />', () => {
     const div = component.container.querySelector('.togglableContent')
     expect(div).toHaveStyle('display: none')
   })
-
 })

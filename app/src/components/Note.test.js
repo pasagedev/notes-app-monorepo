@@ -13,7 +13,7 @@ test('renders content', () => {
   const mockHandler = jest.fn()
 
   const component = render(
-    <Note note={note} toggleImportance={mockHandler}/>
+    <Note note={note} toggleImportance={mockHandler} />
   )
 
   component.debug()
